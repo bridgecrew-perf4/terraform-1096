@@ -10,6 +10,7 @@ terraform {
 
   # Terraform Cloud as the remote backend
   # Execution mode is set to "local" in Terrafrom Cloud setting page for this workspace
+  # Cannot use input variables with backend blocks
   backend "remote" {
     hostname     = "app.terraform.io"
     organization = "pymkdb"
