@@ -8,13 +8,15 @@ terraform {
 
   required_version = ">= 1.1.7"
 
-  # Terraform Cloud as the remote backend
-  # Execution mode is set to "local" in Terrafrom Cloud setting page for this workspace
-  # Cannot use input variables with backend blocks
-  backend "remote" {
-    hostname     = "app.terraform.io"
+  # Backend configuration
+  # Prior to v1.1.0, the backend block was: backend "remote" {...}
+  # Cannot use input variables with cloud/backend blocks
+  # 
+  # Terraform Cloud:
+  # "Execution mode" is set to "local" in Terrafrom Cloud setting page for this workspace
+  cloud {
     organization = "pymkdb"
-
+    hostname     = "app.terraform.io" # Optional; defaults to app.terraform.io
     workspaces {
       name = "sandbox"
     }
